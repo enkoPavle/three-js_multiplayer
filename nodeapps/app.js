@@ -9,6 +9,10 @@ const Control = require("./userControl.js");
 app.use(express.static("../public_html/ballsandboxes/"));
 app.use(express.static("../public_html/libs"));
 
+app.use(cors({
+  origin: '*'
+}));
+
 // -------------------------Cannon-----------------------
 
 const objectsToUpdate = [];
