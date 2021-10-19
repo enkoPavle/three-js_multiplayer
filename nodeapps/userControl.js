@@ -10,9 +10,6 @@ class Control {
     this.userBody = userBody;
     this.pitchObject = new THREE.Object3D();
     this.yawObject = new THREE.Object3D();
-    // this.pitchObject.position.setX(this.userBody.position.x + 2);
-    // this.pitchObject.position.setY(this.userBody.position.y);
-    // this.pitchObject.position.setZ(this.userBody.position.z + 5);
     this.pitchObject.position.setX(this.userBody.position.x);
     this.pitchObject.position.setY(this.userBody.position.y);
     this.pitchObject.position.setZ(this.userBody.position.z);

@@ -1,5 +1,5 @@
 {
-  "name": "blockland",
+  "name": "balls_and_boxes",
   "version": "0.0.1",
   "description": "multi-player socket.io app",
   "dependencies": {
