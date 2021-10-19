@@ -77,22 +77,30 @@ class Control {
 
         case "KeyW":
         case "ArrowUp":
-          this.moveForward = true;
+          if (this.canJump) {
+            this.moveForward = true;
+          }
           break;
 
         case "KeyA":
         case "ArrowLeft":
-          this.moveLeft = true;
+          if (this.canJump) {
+            this.moveLeft = true;
+          }
           break;
 
         case "KeyS":
         case "ArrowDown":
-          this.moveBackward = true;
+          if (this.canJump) {
+            this.moveBackward = true;
+          }
           break;
 
         case "KeyD":
         case "ArrowRight":
-          this.moveRight = true;
+          if (this.canJump) {
+            this.moveRight = true;
+          }
           break;
 
         case "Space":
