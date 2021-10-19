@@ -9,7 +9,7 @@ class Game {
     this.clock = new THREE.Clock();
     this.oldElapsedTime = 0;
 
-    this.url = "http://localhost:3000/scene-objects";
+    this.url = "https://enkopavle.pp.ua/scene-objects";
     this.sceneObjects;
     this.objectsToUpdate = [];
     this.remoteData = [];
