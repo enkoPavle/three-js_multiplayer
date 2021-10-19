@@ -219,9 +219,9 @@ class Game {
   }
 
   onPointerlockChange = () => {
-    // if (!document.pointerLockElement) {
-    //   window.location.reload();
-    // }
+    if (!document.pointerLockElement) {
+      window.location.reload();
+    }
   };
 
   reload() {
