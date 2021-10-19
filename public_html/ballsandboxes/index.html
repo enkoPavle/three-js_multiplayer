@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Balls and Boxes</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="description"
+		content="Balls and Boxes is a multi-player game. Using the Three.js library. author:Bohdan Pavlemko ©2021 category:application-javascript" />
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div class="container">
+		<div class="menu">
+			<h1 class="menu__header">Balls and Boxes</h1>
+			<button id="button-controls" class="menu__button">Controls</button>
+			<button id="button-start" class="menu__button menu__button--green">Play</button>
+		</div>
+		<div class="controls">
+			<button id="button-back" class="menu__button">back to menu</button>
+			<table class="controls__table">
+				<tr>
+					<td>Look</td>
+					<td>-</td>
+					<td>Mouse</td>
+				</tr>
+				<tr>
+					<td>Move forward</td>
+					<td>-</td>
+					<td>W or Arrow Up</td>
+				</tr>
+				<tr>
+					<td>Move backward</td>
+					<td>-</td>
+					<td>S or Arrow Down</td>
+				</tr>
+				<tr>
+					<td>Move left</td>
+					<td>-</td>
+					<td>A or Arrow left</td>
+				</tr>
+				<tr>
+					<td>Move right</td>
+					<td>-</td>
+					<td>D or Arrow Right</td>
+				</tr>
+				<tr>
+					<td>Accelerate</td>
+					<td>-</td>
+					<td>Shift</td>
+				</tr>
+				<tr>
+					<td>Jump</td>
+					<td>-</td>
+					<td>Space</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>Escape to pause</td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+		<!-- <div id="loading"></div> -->
+		<canvas id="canvas" class="webgl"></canvas>
+	</div>
+
+
+	<script>
+		const menu = document.querySelector('.menu')
+		const controls = document.querySelector('.controls')
+		const buttonControls = document.getElementById('button-controls')
+		const buttonBack = document.getElementById('button-back')
+
+		buttonControls.addEventListener('click', () => {
+			menu.style.display = 'none'
+			controls.style.display = 'flex'
+		})
+		buttonBack.addEventListener('click', () => {
+			menu.style.display = 'flex'
+			controls.style.display = 'none'
+		})
+	</script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="./script.js"></script>
+	<script src="./libs/three.js"></script>
+	<script src="./libs/cannon.js"></script>
+	<script src="./libs/three.min.js"></script>
+	<script src="./libs/cannon.min.js"></script>
+	<!-- <script>
+		function myFun(checkbox) {
+			let checkboxes = document.getElementsByName('game')
+			checkboxes.forEach((item) => {
+				if (item !== checkbox) item.checked = false
+			})
+		}
+	</script> -->
+	<script>
+		let game
+		document.addEventListener("DOMContentLoaded", function () { game = new Game(); });
+	</script>
+</body>
+
+</html>
