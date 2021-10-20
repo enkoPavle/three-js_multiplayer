@@ -265,7 +265,7 @@ for (let i = 0; i < 15; i++) {
 
 const userShape = new CANNON.Sphere(1);
 
-const createUser = (id) => {
+const createUser = (data) => {
   const userBody = new CANNON.Body({
     mass: 20,
     position: new CANNON.Vec3(0, 10, 0),
@@ -277,11 +277,11 @@ const createUser = (id) => {
 
   world.addBody(userBody);
 
-  objectsToUpdate.push({ id, body: userBody, control: new Control(userBody) });
+  objectsToUpdate.push({ id: data.id, body: userBody, control: new Control(userBody) });
 
   addSceneObject(
     "dynamic",
-    id,
+    data.id,
     "user",
     "SphereGeometry",
     [1, 20, 20],
@@ -289,7 +289,7 @@ const createUser = (id) => {
     {
       metalness: 0.3,
       roughness: 0.4,
-      color: "red",
+      color: data.color,
     },
     {
       castShadow: true,
@@ -335,7 +335,6 @@ app.get("/scene-objects", function (req, res) {
   res.send(sceneObjects);
 });
 
-let numbers = 0;
 io.on("connection", (socket) => {
   const userId = crypto.randomBytes(16).toString("hex");
   io.sockets.connected[socket.id].emit("getId", userId);
@@ -345,8 +344,8 @@ io.on("connection", (socket) => {
     removeUser(userId);
     io.sockets.emit("remove-user-mesh", userId);
   });
-  socket.on("create-user", (id) => {
-    createUser(id);
+  socket.on("create-user", (data) => {
+    createUser(data);
     io.sockets.emit(
       "new-user-mesh",
       sceneObjects.dynamic[sceneObjects.dynamic.length - 1]
@@ -371,7 +370,7 @@ http.listen(3000, function () {
   console.log("listening on *:3000");
 });
 
-const tick = 20;
+const tick = 15;
 const clock = new THREE.Clock();
 let oldElapsedTime = 0;
 

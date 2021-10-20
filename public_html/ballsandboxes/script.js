@@ -14,6 +14,8 @@ class Game {
     this.objectsToUpdate = [];
     this.remoteData = [];
 
+    this.playerColor;
+    console.log(document.querySelector("#color").value)
     this.playerMesh;
     this.player;
     this.pitchObject = new THREE.Object3D();
@@ -294,6 +296,7 @@ class Game {
   startGame() {
     this.menu.style.display = "none";
     this.canvas.style.display = "initial";
+    this.playerColor = document.querySelector("#color").value;
     this.getSceneObjects(this.url);
     this.initControll();
     this.socket = window.io();
@@ -301,8 +304,12 @@ class Game {
     const socket = this.socket;
 
     socket.on("getId", function (id) {
+      const data = {
+        id,
+        color: game.playerColor,
+      };
       game.id = id;
-      socket.emit("create-user", id);
+      socket.emit("create-user", data);
     });
   }
 

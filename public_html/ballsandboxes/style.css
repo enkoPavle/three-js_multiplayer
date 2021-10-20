@@ -45,6 +45,14 @@ body {
   margin-bottom: 30px;
 }
 
+.menu__color {
+  font-size: 24px;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+}
+
 .menu__button {
   font-size: 24px;
   text-transform: uppercase;
@@ -73,14 +81,14 @@ body {
 }
 
 .controls__table td:first-child {
-    text-align: left;
+  text-align: left;
 }
 
-.controls__table td:nth-child(2){
-    padding: 0 20px;
+.controls__table td:nth-child(2) {
+  padding: 0 20px;
 }
 
-.controls__table tr:last-child{
-   text-align: center;
-   width: 100%;
+.controls__table tr:last-child {
+  text-align: center;
+  width: 100%;
 }
