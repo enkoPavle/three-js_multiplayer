@@ -9,10 +9,6 @@ const Control = require("./userControl.js");
 app.use(express.static("../public_html/ballsandboxes/"));
 app.use(express.static("../public_html/libs"));
 
-app.use(cors({
-  origin: '*'
-}));
-
 // -------------------------Cannon-----------------------
 
 const objectsToUpdate = [];
@@ -334,6 +330,8 @@ app.get("/", function (req, res) {
 });
 
 app.get("/scene-objects", function (req, res) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
   res.send(sceneObjects);
 });
 
