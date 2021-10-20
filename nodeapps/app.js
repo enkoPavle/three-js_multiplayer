@@ -375,7 +375,7 @@ http.listen(3000, function () {
   console.log("listening on *:3000");
 });
 
-const tick = 15;
+const tick = 20;
 const clock = new THREE.Clock();
 let oldElapsedTime = 0;
 
@@ -394,7 +394,7 @@ setInterval(function () {
     }
   }
 
-  world.step(1 / 60, tick * 1.25, 3);
+  world.step(1 / 60, tick, 3);
 
   if (objectsToUpdate.length) {
     for (const object of objectsToUpdate) {
