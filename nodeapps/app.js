@@ -394,7 +394,7 @@ setInterval(function () {
     }
   }
 
-  world.step(1 / 60, tick, 3);
+  world.step(1 / 60, tick * 1.25, 3);
 
   if (objectsToUpdate.length) {
     for (const object of objectsToUpdate) {
