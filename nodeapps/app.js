@@ -266,6 +266,7 @@ for (let i = 0; i < 15; i++) {
 const userShape = new CANNON.Sphere(1);
 
 const createUser = (data) => {
+  const { id, color } = data;
   const userBody = new CANNON.Body({
     mass: 20,
     position: new CANNON.Vec3(0, 10, 0),
@@ -277,11 +278,15 @@ const createUser = (data) => {
 
   world.addBody(userBody);
 
-  objectsToUpdate.push({ id: data.id, body: userBody, control: new Control(userBody) });
+  objectsToUpdate.push({
+    id,
+    body: userBody,
+    control: new Control(userBody),
+  });
 
   addSceneObject(
     "dynamic",
-    data.id,
+    id,
     "user",
     "SphereGeometry",
     [1, 20, 20],
@@ -289,7 +294,7 @@ const createUser = (data) => {
     {
       metalness: 0.3,
       roughness: 0.4,
-      color: data.color,
+      color: color,
     },
     {
       castShadow: true,
@@ -344,8 +349,8 @@ io.on("connection", (socket) => {
     removeUser(userId);
     io.sockets.emit("remove-user-mesh", userId);
   });
-  socket.on("create-user", (data) => {
-    createUser(data);
+  socket.on("create-user", (id) => {
+    createUser(id);
     io.sockets.emit(
       "new-user-mesh",
       sceneObjects.dynamic[sceneObjects.dynamic.length - 1]

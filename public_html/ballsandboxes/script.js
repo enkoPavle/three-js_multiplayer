@@ -15,7 +15,6 @@ class Game {
     this.remoteData = [];
 
     this.playerColor;
-    console.log(document.querySelector("#color").value)
     this.playerMesh;
     this.player;
     this.pitchObject = new THREE.Object3D();
